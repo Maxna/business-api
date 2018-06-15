@@ -1,26 +1,25 @@
 package dao;
 
 import models.Service;
-
 import java.util.List;
 
 public interface ServiceDao {
 
 
     //LIST
-    List<Service> getAll();
+//    List<Service> getAll();
 
     //CREATE
-    void add(Service type, Service detail, int projectId);
+    void add(Service type);
 
     //READ
-    Service findById(int id);
+//    Service findById(int id);
 
     //UPDATE
-    void update(String type, String detail, int projectId);
+//    void update(String type, String detail, int projectId);
 
     //DELETE
-    void deleteById(int id);
-    void clearAllServices();
+//    void deleteById(int id);
+//    void clearAllServices();
 
 }

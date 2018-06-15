@@ -9,20 +9,20 @@ public interface ProjectDao {
 
 
     //LIST
-    List<Project> getAll();
-    List<Service> getAllServicesForAProject(int projectId);
+//    List<Project> getAll();
+//    List<Service> getAllServicesForAProject(int projectId);
 
     //CREATE
-    void add(Project title, Project description);
+    void add(Project title);
 
     //READ
-    Project findById(int id);
+//    Project findById(int id);
 
     //UPDATE
-    void update(String title, String description);
+//    void update(String title, String description);
 
     //DELETE
-    void deleteById(int id);
-    void clearAllProjects();
+//    void deleteById(int id);
+//    void clearAllProjects();
 
 }
