@@ -1,4 +1,28 @@
 package dao;
 
+import models.Service;
+import models.Project;
+
+import java.util.List;
+
 public interface ProjectDao {
+
+
+    //LIST
+    List<Project> getAll();
+    List<Service> getAllServicesForAProject(int projectId);
+
+    //CREATE
+    void add(Project title, Project description);
+
+    //READ
+    Project findById(int id);
+
+    //UPDATE
+    void update(String title, String description);
+
+    //DELETE
+    void deleteById(int id);
+    void clearAllProjects();
+
 }
