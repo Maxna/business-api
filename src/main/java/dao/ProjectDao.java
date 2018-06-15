@@ -9,7 +9,7 @@ public interface ProjectDao {
 
 
     //LIST
-//    List<Project> getAll();
+    List<Project> getAll();
 //    List<Service> getAllServicesForAProject(int projectId);
 
     //CREATE
@@ -19,7 +19,7 @@ public interface ProjectDao {
     Project findById(int id);
 
     //UPDATE
-//    void update(String title, String description);
+    void update(int id, String title, String description);
 
     //DELETE
 //    void deleteById(int id);

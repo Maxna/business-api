@@ -26,6 +26,17 @@ public class Sql2oProjectDaoTest {
     }
 
     @Test
+    public void getAllProjectsCorrectly() throws Exception{
+        Project testProject = new Project("Vaseo", "Housing project in Phoenix");
+        Project otherProject = new Project("Vaseo", "Housing project in Phoenix");
+        Project emptyProject = new Project("Vaseo", "Housing project in Phoenix");
+        projectDao.add(testProject);
+        projectDao.add(otherProject);
+        assertFalse(projectDao.getAll().contains(emptyProject));
+        assertNotEquals(3, projectDao.getAll().size());
+    }
+
+    @Test
     public void addingProjectSetsId() throws Exception{
         Project testProject = new Project("Vaseo", "Housing project in Phoenix");
         int originalProjectId = testProject.getId();
@@ -42,5 +53,14 @@ public class Sql2oProjectDaoTest {
         assertEquals(1, testProject.getId());
     }
 
+    @Test
+    public void updatesProjectTitleCorrectly() throws Exception{
+        Project testProject = new Project("Vaseo", "Housing project in Phoenix");
+        projectDao.add(testProject);
+        projectDao.update(testProject.getId(), "1600 Vine", "Housing project in Hollywood");
+        Project updatedProject = projectDao.findById(testProject.getId());
+        assertEquals("1600 Vine", updatedProject.getTitle());
+        assertEquals("Housing project in Hollywood", updatedProject.getDescription());
+    }
 
 }

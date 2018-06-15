@@ -35,5 +35,27 @@ public class Sql2oProjectDao implements ProjectDao {
         }
     }
 
+    @Override
+    public List<Project> getAll() {
+        try(Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM projects")
+                    .executeAndFetch(Project.class);
+        }
+    }
+
+    @Override
+    public void update(int id, String newTitle, String newDescription) {
+        String sql = "UPDATE projects SET title = :title, description = :description WHERE id = :id";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("title", newTitle)
+                    .addParameter("description", newDescription)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
 
 }
