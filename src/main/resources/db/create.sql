@@ -9,5 +9,6 @@ CREATE TABLE IF NOT EXISTS projects (
 CREATE TABLE IF NOT EXISTS services (
     id int PRIMARY KEY auto_increment,
     type VARCHAR,
+    detail VARCHAR,
     projectId INTEGER
 );

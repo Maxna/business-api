@@ -1,4 +1,4 @@
 package dao;
 
-public class ServiceDao {
+public interface ServiceDao {
 }

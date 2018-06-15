@@ -5,7 +5,7 @@
 
 ## Description
 
-A small business database developed in Java on Intellij that will take inputs for project services and a project description for each development project. The projects will also have a title that can be edited after creation. The home page of the app will have some information about the business as well as a list of all the projects completed. For each project the user should be able to view its services, and add new services if needed.
+A small business database developed in Java on Intellij that will take inputs for project services and a project description for each development project. The projects will also have a title that can be edited after creation. The home page of the app will have some information about the business as well as a list of all the projects completed. For each project the user should be able to view its description or services, and add, update, or delete services if needed.
 
 
 ### Setup
@@ -13,14 +13,16 @@ A small business database developed in Java on Intellij that will take inputs fo
 Clone from github
 Open Intellij
     -Check for current dependencies (found in build.gradle)
-Open Browser
 Recompile and run
+Open localhost in browser (0.0.0.0:4567)
 
 
 
 ### Technologies Used
 
 Java
+Spark
+PostgreSQL (H2)
 Intellij
 
 
@@ -33,6 +35,10 @@ _*User Story:*_
 |5. The user should be able to create a new project.|
 
 
+
+#### Unfinished Functionality
+*placeholder1
+*placeholder2
 
 
 #### Links
