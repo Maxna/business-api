@@ -16,7 +16,7 @@ public interface ProjectDao {
     void add(Project title);
 
     //READ
-//    Project findById(int id);
+    Project findById(int id);
 
     //UPDATE
 //    void update(String title, String description);

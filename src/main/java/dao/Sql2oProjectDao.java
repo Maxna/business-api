@@ -25,4 +25,15 @@ public class Sql2oProjectDao implements ProjectDao {
             System.out.println(ex);
         }
     }
+
+    @Override
+    public Project findById(int id) {
+        try(Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM projects WHERE id = :id")
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Project.class);
+        }
+    }
+
+
 }

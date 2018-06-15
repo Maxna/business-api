@@ -32,4 +32,15 @@ public class Sql2oProjectDaoTest {
         projectDao.add(testProject);
         assertNotEquals(originalProjectId, testProject.getId());
     }
+
+    @Test
+    public void findExistingProjectById() throws Exception{
+        Project testProject = new Project("Vaseo", "Housing project in Phoenix");
+        int originalProjectId = testProject.getId();
+        projectDao.add(testProject);
+        assertNotEquals(originalProjectId, testProject.getId());
+        assertEquals(1, testProject.getId());
+    }
+
+
 }
