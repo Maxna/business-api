@@ -13,7 +13,7 @@ public class Sql2oServiceDao implements ServiceDao {
 
     @Override
     public void add(Service type) {
-        String sql = "INSERT INTO services (type) VALUES (:type)";
+        String sql = "INSERT INTO services (type, projectId) VALUES (:type, :projectId)";
         try(Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
                     .bind(type)

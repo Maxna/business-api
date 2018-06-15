@@ -13,7 +13,7 @@ public class Sql2oProjectDaoTest {
 
     @Before
     public void setUp() throws Exception {
-        String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql";
+        String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         projectDao = new Sql2oProjectDao(sql2o);
         serviceDao = new Sql2oServiceDao(sql2o);
