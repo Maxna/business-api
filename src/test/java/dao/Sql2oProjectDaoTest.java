@@ -63,4 +63,40 @@ public class Sql2oProjectDaoTest {
         assertEquals("Housing project in Hollywood", updatedProject.getDescription());
     }
 
+    @Test
+    public void deletesCorrectlyById() throws Exception{
+        Project testProject = new Project("Vaseo", "Housing project in Phoenix");
+        projectDao.add(testProject);
+        Project otherProject = new Project("1600 Vine", "Housing project in Hollywood");
+        projectDao.add(otherProject);
+        projectDao.deleteById(testProject.getId());
+        assertFalse(projectDao.getAll().contains(testProject));
+    }
+
+    @Test
+    public void clearsAllProjectsCorrectly() throws Exception{
+        Project testProject = new Project("Vaseo", "Housing project in Phoenix");
+        projectDao.add(testProject);
+        Project otherProject = new Project("1600 Vine", "Housing project in Hollywood");
+        projectDao.add(otherProject);
+        projectDao.clearAllProjects();
+        assertEquals(0, projectDao.getAll().size());
+    }
+
+    @Test
+    public void getsAllServicesForAProjectCorrectly() throws Exception{
+        Project testProject = new Project("Vaseo", "Housing project in Phoenix");
+        projectDao.add(testProject);
+        int projectId = testProject.getId();
+        Service service1 = new Service("Consulting", "Bond Services",  1);
+        Service service2 = new Service("Tax Credit", "Tax Credit Services",  1);
+        Service service3 = new Service("Advising", "Consultations",  1);
+        serviceDao.add(service1);
+        serviceDao.add(service2);
+        assertEquals(2, projectDao.getAllServicesForAProject(projectId).size());
+        assertTrue(projectDao.getAllServicesForAProject(projectId).contains(service1));
+//        assertTrue(projectDao.getAllServicesForAProject(projectId).contains(service2));
+        assertFalse(projectDao.getAllServicesForAProject(projectId).contains(service3));
+
+    }
 }

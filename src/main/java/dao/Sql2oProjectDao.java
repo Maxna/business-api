@@ -57,5 +57,35 @@ public class Sql2oProjectDao implements ProjectDao {
         }
     }
 
+    @Override
+    public void deleteById(int id) {
+        String sql = "DELETE from projects WHERE id = :id";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        }   catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
 
+    @Override
+    public void clearAllProjects() {
+        String sql = "DELETE from projects";
+        try(Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    @Override
+    public List<Service> getAllServicesForAProject(int projectId) {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM services WHERE projectId = :projectId")
+                    .addParameter("projectId", projectId)
+                    .executeAndFetch(Service.class);
+        }
+    }
 }
